@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   let navigate = useNavigate();
   let handleForgotPassword = ()=>{
     sendPasswordResetEmail(auth, email)
-  .then(() => {
+  .then(() => { 
     toast.success("Check your email for reset password.");
     setTimeout(()=>{
       navigate("/login");

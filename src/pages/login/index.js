@@ -5,10 +5,13 @@ import { getAuth, signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider
 import { ToastContainer, toast } from 'react-toastify';
 import { BallTriangle } from  'react-loader-spinner';
 import {Link,useNavigate } from "react-router-dom";
+import {  useDispatch } from 'react-redux';
+import { userLoginInfo } from '../../slices/userSlice';
 
 const Login = () => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
+    const dispatch = useDispatch();
     let navigate = useNavigate();
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
@@ -63,9 +66,12 @@ const Login = () => {
       if(email && password && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)){
         setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        .then((user) => {
             setLoading(false);
             toast.success("Login Successfully.Please wait.");
+            dispatch(userLoginInfo(user.user));
+            localStorage.setItem("userInfo",JSON.stringify(user));
+
         // setSuccess("login Successfully.Please wait.");
        setTimeout(() => {
         navigate('/');
