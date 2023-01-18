@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 import { RiEyeOffFill } from "react-icons/ri";
 import { RiEyeFill } from "react-icons/ri";
-import { getAuth, createUserWithEmailAndPassword,sendEmailVerification  } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification,updateProfile   } from "firebase/auth";
 // import { ToastContainer, toast } from 'react-toastify';
 import { BallTriangle } from  'react-loader-spinner';
 import {Link,useNavigate } from "react-router-dom";
@@ -70,8 +70,13 @@ const Registration = () => {
     // }
     if(email && name && password && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)){
       setLoading(true);
-      createUserWithEmailAndPassword(auth, email, password).then(() =>{
-        // toast.success("Registration Successful.Please verify your email.")
+      createUserWithEmailAndPassword(auth, email, password).then((user) =>{
+        updateProfile(auth.currentUser, {
+          displayName: name, 
+          photoURL: "images/profile.png"
+        }).then(() => {
+          // toast.success("Registration Successful.Please verify your email.")
+          console.log(user);
         setSuccess("Registration Successful.Please verify your email.")
         setName("");
         setEmail("");
@@ -81,6 +86,10 @@ const Registration = () => {
         setTimeout(()=>{
           navigate("/login");
         },2000);
+        }).catch((error) => {
+          console.log(error);
+        });
+        
       }).catch((error)=>{
         if(error.code.includes("auth/email-already-in-use")){
           setEmailerr("Email already in use");
