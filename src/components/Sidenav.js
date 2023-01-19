@@ -19,7 +19,7 @@ const Sidenav = () => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
 
-    let data = useSelector((state) => state.userLoginInfo.userInfo.photoURL);
+    let data = useSelector((state) => state.userLoginInfo.userInfo);
     
     // for image crop
     const [image, setImage] = useState("");
@@ -87,11 +87,12 @@ const getCropData = () => {
   return (
     <div className='w-full bg-primary h-screen rounded-3xl p-9'>
       <div className='group relative w-28 rounded-full'>
-      <img className='mx-auto w-full h-full rounded-full' src={data} />
+      <img className='mx-auto w-full h-full rounded-full' src={data.photoURL} />
       <div onClick={handleImageUpload} className="opacity-0 group-hover:opacity-100 group-hover:w-full h-full bg-[rgba(0,0,0,.4)] rounded-full bg-state-50 absolute top-0 left-0 flex justify-center items-center">
         <BsCloudUploadFill className='text-white text-3xl'/>
       </div>
       </div>
+      <h2 className='font-nunito text-center font-bold text-xl text-white'>{data.displayName}</h2>
      
     
      <div className="mt-16 relative z-[1] after:z-[-1] after:bg-white after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-primary before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg">
@@ -110,7 +111,7 @@ const getCropData = () => {
      <FiSettings className='text-5xl text-white mx-auto'/>
      </div>
 
-     <div onClick={handleLogOut} className="mt-28 relative z-[1] after:z-[-1] after:bg-none after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-none before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg">
+     <div onClick={handleLogOut} className="mt-20 relative z-[1] after:z-[-1] after:bg-none after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-none before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg">
      <AiOutlineLogout className='text-5xl text-white mx-auto'/>
      </div>
      {imageUploadModal && (
