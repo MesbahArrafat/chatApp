@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import {BsThreeDotsVertical} from "react-icons/bs";
-import { getDatabase, ref, onValue} from "firebase/database";
 import { useSelector } from 'react-redux';
+import { getDatabase, ref, onValue, set, push, remove} from "firebase/database";
 
 
 const Blockedlist = () => {
@@ -34,6 +34,19 @@ const Blockedlist = () => {
         });
     },[]);
 
+    let handleUnblock =(item)=>{
+      set(push(ref(db, 'friend')), {
+        sendername:item.block,
+        senderid:item.blockid,
+        receiverid: data.uid,
+        receivername: data.displayName,
+       }).then(()=>{
+         remove(ref(db, 'block/'+item.id)).then(() => {
+             console.log("Data Deleted.")
+         });
+       });
+    };
+
   return (
     <div className="w-full bg-white shadow-lg rounded-lg py-3 px-5 mt-3.5
     h-[335px] overflow-scroll">
@@ -48,12 +61,12 @@ const Blockedlist = () => {
              </div>
              <div>
              <h3 className="font-nunito font-bold text-xl">{item.block}</h3>
-             <h6 className="font-nunito font-bold">{item.blockby}</h6>
+             <h3 className="font-nunito font-bold">{item.blockby}</h3>
              <p className="font-nunito font-semibold text-[14px] text-[#4D4D4D]">Hi Guys</p>
              </div>
              <div>
-                {item.blockbyid && (
-                <button className='font-nunito font-bold text-xl bg-primary text-white py-2.5 px-5 rounded'>Unblock</button>
+                {item.blockid && (
+                <button onClick={()=>handleUnblock(item)}className='font-nunito font-bold text-xl bg-primary text-white py-2.5 px-5 rounded'>Unblock</button>
                 )}
                  
              </div>
