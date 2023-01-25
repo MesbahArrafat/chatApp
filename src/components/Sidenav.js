@@ -6,14 +6,14 @@ import {IoIosNotificationsOutline} from "react-icons/io";
 import {FiSettings} from "react-icons/fi";
 import {AiOutlineLogout} from "react-icons/ai";
 import { getAuth, signOut, updateProfile } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
+import {Link,useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { userLoginInfo } from '../slices/userSlice';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import { getStorage, ref, uploadString,getDownloadURL  } from "firebase/storage";
 
-const Sidenav = () => {
+const Sidenav = ({ active }) => {
     const auth = getAuth();
     const storage = getStorage();
     let navigate = useNavigate();
@@ -95,12 +95,24 @@ const getCropData = () => {
       <h2 className='font-nunito text-center font-bold text-xl text-white'>{data.displayName}</h2>
      
     
-     <div className="mt-16 relative z-[1] after:z-[-1] after:bg-white after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-primary before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg">
-     <AiOutlineHome className='text-5xl text-primary mx-auto'/>
+     <div className={active=="home" 
+     ?
+     "mt-16 relative z-[1] after:z-[-1] after:bg-white after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-primary before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg"
+     :
+    "mt-16 relative z-[1] after:z-[-1] after:bg-white after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-primary before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg"}>
+      <Link to="/">
+      <AiOutlineHome className='text-5xl text-primary mx-auto'/>
+      </Link>
      </div>
 
-     <div className="mt-10 relative z-[1] after:z-[-1] after:bg-none after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-none before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg">
+     <div className={active=="message" 
+     ?
+     "mt-10 relative z-[1] after:z-[-1] after:bg-none after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-none before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg"
+    :
+    "mt-10 relative z-[1] after:z-[-1] after:bg-none after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-none before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg" }>
+     <Link to="/message">
      <AiOutlineMessage className='text-5xl text-white mx-auto'/>
+      </Link>
      </div>
 
      <div className="mt-10 relative z-[1] after:z-[-1] after:bg-none after:h-[89px] after:content-[''] after:absolute after:top-[-16px] after:left-0 after:w-[135%] after:rounded-tl-lg after:rounded-bl-lg before:w-[8px] before:h-[185%] before:bg-none before:absolute before:top-[-16px] before:right-[-36px] before:content-[''] before:rounded-tl-lg before:rounded-bl-lg">

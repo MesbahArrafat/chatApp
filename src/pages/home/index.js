@@ -39,7 +39,7 @@ const Home = () =>{
         ?
         (<>
         <div className='w-[186px] pl-2.5'>
-          <Sidenav/>
+          <Sidenav active="home"/>
         </div>
         <div className='w-[420px]'>
         <Search/>
