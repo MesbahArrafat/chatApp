@@ -3,6 +3,7 @@ import Sidenav from "../../components/Sidenav";
 import Search from "../../components/Search";
 import Friends from "../../components/Friends";
 import MessageGroups from "../../components/MessageGroups";
+import Chat from '../../components/Chat';
 
 const Message = () => {
   return (
@@ -15,11 +16,9 @@ const Message = () => {
          <MessageGroups />
          <Friends />
         </div>
-        <div className='w-[420px]'>
-        <h1>lhgegiegb jvbuie</h1>
-        </div>
-        <div className='w-[420px]'>
-        <h1>lhgegiegb jvbuie</h1>
+
+        <div className='w-[850px]'>
+        <Chat/>
         </div>
     </div>
   )
