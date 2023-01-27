@@ -3,11 +3,12 @@ import ModalImage from "react-modal-image";
 import {BsThreeDotsVertical,BsFillTriangleFill} from "react-icons/bs";
 import {GrGallery} from "react-icons/gr";
 import {MdSend} from "react-icons/md";
-import {BsFillCameraFill,BsFillMicFill} from "react-icons/bs";
+import {BsFillCameraFill,BsFillMicFill,BsFillEmojiSmileFill} from "react-icons/bs";
 import { useSelector } from 'react-redux';
 import { getDatabase, ref, set, onValue, remove,push } from "firebase/database";
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import moment from 'moment/moment';
+import EmojiPicker from 'emoji-picker-react';
 
 
 const Chat = () => {
@@ -17,6 +18,7 @@ const Chat = () => {
     let activeChatName = useSelector(state=> state.activeChat);
     let [message,setMessage]=useState("");
     let [messagelist,setMessagelist]=useState([]);
+    let [showemoji,setShowEmoji]=useState(false);
     
 
     let handleMessageSend = ()=>{
@@ -80,6 +82,11 @@ const Chat = () => {
             });
         }
         );
+    };
+
+    let handleEmojiSelect = (emoji)=>{
+       console.log(emoji);
+       setMessage(message + emoji.emoji);
     };
 
   return (
@@ -247,19 +254,26 @@ const Chat = () => {
 
             <div className='flex mt-3'>
                 <div className='w-[95%] relative'>
-                <input onChange={(e)=>setMessage(e.target.value)} className='bg-[#cfb8d5fe] p-3 w-full rounded-lg required:border-red-500 '/>
+                <input onChange={(e)=>setMessage(e.target.value)} className='bg-[#cfb8d5fe] p-3 w-full rounded-lg required:border-red-500 ' value={message}/>
                 <label>
                     <input onChange={handleImageUpload} className="hidden" type="file" />
                     <GrGallery className='absolute top-4 right-2'/>
                 </label>
                 <BsFillCameraFill className='absolute top-4 right-8'/>
                 <BsFillMicFill className='absolute top-4 right-14'/>
+                <BsFillEmojiSmileFill onClick={()=>setShowEmoji(!showemoji)} className='absolute top-4 right-20'/>
+                {showemoji && 
+            <div className="w-full absolute top-[-450px] right-0">
+                  <EmojiPicker width="100%" onEmojiClick={(emoji)=>handleEmojiSelect(emoji)}/>
+            </div>}
                 </div>
                 <button 
                 onClick={handleMessageSend}className='bg-primary p-3 rounded-md text-white ml-2'>
                     <MdSend />
                 </button>
             </div>
+            
+            
         </div>
          {/* message part end */}
     </div>
