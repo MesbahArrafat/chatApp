@@ -1,12 +1,14 @@
 import React, { useEffect,useState } from 'react';
 import {BsThreeDotsVertical} from "react-icons/bs";
 import { getDatabase, ref, set, onValue, remove,push } from "firebase/database";
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import {activeChat} from "../slices/activeChatSlice"
 
 
 const Friends = () => {
     const db = getDatabase();
     let data = useSelector((state) => state.userLoginInfo.userInfo);
+    let dispatch = useDispatch();
 
     let[friends,setFriends] = useState([]);
 
@@ -46,6 +48,16 @@ const Friends = () => {
         });
      }
     };
+
+    let handleActiveGroupSingle = (item)=>{
+        if(item.receiverid == data.uid){
+            dispatch(activeChat({status:"single",id:item.senderid,name:item.sendername}));
+        }else{
+            dispatch(activeChat({status:"single",id:item.receiverid,name:item.receivername}));
+        }
+      ;
+    };
+
   return (
     <div className="w-full bg-white shadow-lg rounded-lg py-3 px-5 mt-3.5
     h-[365px] overflow-scroll">
@@ -54,7 +66,7 @@ const Friends = () => {
         <BsThreeDotsVertical className='absolute top-[6px] right-[30px] text-primary'/>
      </div>
      {friends.map(item=>(
-        <div className='flex gap-x-5 items-center border-b border-solid border-primary pb-3.5 mt-3.5'>
+        <div onClick={()=>handleActiveGroupSingle(item)} className='flex gap-x-5 items-center border-b border-solid border-primary pb-3.5 mt-3.5'>
         <div>
             <img className='w-[70ox] h-[70px] rounded-full' src='images/friendrequest.png'/>
         </div>
