@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+    "conversation": 1,
+    "sender": 2,
+    "text": "Hey John! How are you doing?",
+    "timestamp": "2026-04-26T10:00:00"
+  },
+  {
+    "id": 2,
+    "conversation": 1,
+    "sender": 1,
+    "text": "Hi Jane! I'm doing great, thanks for asking 😊",
+    "timestamp": "2026-04-26T10:02:00"
+  },
+  {
+    "id": 3,
+    "conversation": 1,
+    "sender": 2,
+    "text": "Did you finish the React project?",
+    "timestamp": "2026-04-26T10:05:00"
+  },
+  {
+    "id": 4,
+    "conversation": 1,
+    "sender": 1,
+    "text": "Yes! Just wrapped it up. It's looking really good.",
+    "timestamp": "2026-04-26T10:08:00"
+  },
+  {
+    "id": 5,
+    "conversation": 1,
+    "sender": 2,
+    "text": "That's awesome! Can you show me later?",
+    "timestamp": "2026-04-26T10:10:00"
+  },
+  {
+    "id": 6,
+    "conversation": 1,
+    "sender": 1,
+    "text": "Sure thing! Let's meet at the coffee shop.",
+    "timestamp": "2026-04-26T10:15:00"
+  },
+  {
+    "id": 7,
+    "conversation": 1,
+    "sender": 2,
+    "text": "Sounds perfect! See you at 3pm?",
+    "timestamp": "2026-04-26T10:20:00"
+  },
+  {
+    "id": 8,
+    "conversation": 1,
+    "sender": 1,
+    "text": "3pm works! See you there 👍",
+    "timestamp": "2026-04-26T10:25:00"
+  },
+  {
+    "id": 9,
+    "conversation": 1,
+    "sender": 2,
+    "text": "Hey, how are you?",
+    "timestamp": "2026-04-26T10:30:00"
+  },
+  {
+    "id": 10,
+    "conversation": 2,
+    "sender": 3,
+    "text": "Hey John, are we still on for tomorrow?",
+    "timestamp": "2026-04-26T09:00:00"
+  },
+  {
+    "id": 11,
+    "conversation": 2,
+    "sender": 1,
+    "text": "Absolutely! What time works best?",
+    "timestamp": "2026-04-26T09:05:00"
+  },
+  {
+    "id": 12,
+    "conversation": 2,
+    "sender": 3,
+    "text": "How about 10am? We can grab breakfast first.",
+    "timestamp": "2026-04-26T09:08:00"
+  },
+  {
+    "id": 13,
+    "conversation": 2,
+    "sender": 1,
+    "text": "See you tomorrow!",
+    "timestamp": "2026-04-26T09:15:00"
+  },
+  {
+    "id": 14,
+    "conversation": 3,
+    "sender": 4,
+    "text": "I just finished reading that book you recommended.",
+    "timestamp": "2026-04-25T22:00:00"
+  },
+  {
+    "id": 15,
+    "conversation": 3,
+    "sender": 1,
+    "text": "Oh nice! What did you think of it?",
+    "timestamp": "2026-04-25T22:10:00"
+  },
+  {
+    "id": 16,
+    "conversation": 3,
+    "sender": 4,
+    "text": "It was incredible! The ending blew my mind 🤯",
+    "timestamp": "2026-04-25T22:20:00"
+  },
+  {
+    "id": 17,
+    "conversation": 3,
+    "sender": 1,
+    "text": "Right?! I knew you'd love it.",
+    "timestamp": "2026-04-25T22:30:00"
+  },
+  {
+    "id": 18,
+    "conversation": 3,
+    "sender": 4,
+    "text": "That sounds great!",
+    "timestamp": "2026-04-25T22:45:00"
+  },
+  {
+    "id": 19,
+    "conversation": 4,
+    "sender": 1,
+    "text": "Hey Alex, did you get the docs I sent?",
+    "timestamp": "2026-04-25T17:30:00"
+  },
+  {
+    "id": 20,
+    "conversation": 4,
+    "sender": 5,
+    "text": "Not yet! Can you send me the file?",
+    "timestamp": "2026-04-25T18:00:00"
+  },
+  {
+    "id": 21,
+    "conversation": 5,
+    "sender": 1,
+    "text": "Happy birthday! 🎉",
+    "timestamp": "2026-04-25T14:30:00"
+  },
+  {
+    "id": 22,
+    "conversation": 5,
+    "sender": 6,
+    "text": "Thank you so much, John! 🥳",
+    "timestamp": "2026-04-25T14:35:00"
+  }
+]

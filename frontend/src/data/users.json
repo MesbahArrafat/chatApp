@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "username": "john_doe",
+    "avatar": "JD",
+    "is_online": true
+  },
+  {
+    "id": 2,
+    "username": "jane_smith",
+    "avatar": "JS",
+    "is_online": true
+  },
+  {
+    "id": 3,
+    "username": "mike_wilson",
+    "avatar": "MW",
+    "is_online": false
+  },
+  {
+    "id": 4,
+    "username": "sarah_connor",
+    "avatar": "SC",
+    "is_online": true
+  },
+  {
+    "id": 5,
+    "username": "alex_johnson",
+    "avatar": "AJ",
+    "is_online": false
+  },
+  {
+    "id": 6,
+    "username": "emily_davis",
+    "avatar": "ED",
+    "is_online": true
+  }
+]
